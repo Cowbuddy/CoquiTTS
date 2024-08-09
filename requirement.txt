@@ -127,7 +127,7 @@ torchaudio==2.3.1
 tqdm==4.66.4
 trainer==0.0.36
 transformers==4.43.1
--e git+https://github.com/coqui-ai/TTS@dbf1a08a0d4e47fdad6172e433eeb34bc6b13b4e#egg=TTS
+TTS==0.22.0
 typeguard==4.3.0
 typer==0.12.3
 typing_extensions==4.12.2
