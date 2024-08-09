@@ -28,16 +28,23 @@ RUN apt-get update && \
 #    ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # Clone the repository
-RUN git clone https://github.com/Cowbuddy/CoquiTTS.git
+RUN git clone https://github.com/Cowbuddy/CoquiTTS.git .
 
 # Copy and install dependencies
 RUN . $HOME/.cargo/env && \
     pip install --upgrade pip
 
-RUN pip install -e .
-
 # Set environment variables for Rust
 ENV PATH="/root/.cargo/bin:${PATH}"
+
+# Install new requirements
+COPY requirement.txt requirements.txt
+RUN . $HOME/.cargo/env && \
+    pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Honestly not sure but Docker breaks without it and this is in coqui docs
+RUN pip install -e .
 
 # Expose the port the app runs on
 EXPOSE 5002
