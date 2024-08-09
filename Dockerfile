@@ -23,21 +23,21 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy the requirements file and install Python dependencies
-COPY requirement.txt requirements.txt
-RUN . $HOME/.cargo/env && \
-    pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt && \
-    pip install --no-cache-dir SudachiPy==0.6.7
+# Set up SSH for GitHub (assuming you're using a private repository)
+# RUN mkdir -p -m 0700 ~/.ssh && \
+#    ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-# Copy the application code
-COPY . .
+# Clone the repository
+RUN git clone git@github.com:Cowbuddy/CoquiTTS.git /app
+
+# Copy and install dependencies
+RUN . $HOME/.cargo/env && \
+    pip install --upgrade pip
+
+RUN RUN pip install -e .
 
 # Set environment variables for Rust
 ENV PATH="/root/.cargo/bin:${PATH}"
-
-# Not sure tbh
-RUN pip install -e .
 
 # Expose the port the app runs on
 EXPOSE 5002
