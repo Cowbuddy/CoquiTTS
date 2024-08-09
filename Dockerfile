@@ -34,7 +34,7 @@ RUN git clone https://github.com/Cowbuddy/CoquiTTS.git
 RUN . $HOME/.cargo/env && \
     pip install --upgrade pip
 
-RUN RUN pip install -e .
+RUN pip install -e .
 
 # Set environment variables for Rust
 ENV PATH="/root/.cargo/bin:${PATH}"
