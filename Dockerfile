@@ -28,7 +28,7 @@ RUN apt-get update && \
 #    ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # Clone the repository
-RUN git clone git@github.com:Cowbuddy/CoquiTTS.git /app
+RUN git clone https://github.com/Cowbuddy/CoquiTTS.git
 
 # Copy and install dependencies
 RUN . $HOME/.cargo/env && \
