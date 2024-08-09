@@ -1,5 +1,5 @@
 ## Note this code is modified so that the /process endpoint for tts-server can receive a file and return a mp3 audio file, as well as the Dockerfile to support these changes
-# The original version can be found at [[URL or repository](https://github.com/coqui-ai/TTS)].
+# The original version can be found at [[CoquiTTS](https://github.com/coqui-ai/TTS)].
 
 ## 🐸Coqui.ai News
 - 📣 ⓍTTSv2 is here with 16 languages and better performance across the board.
